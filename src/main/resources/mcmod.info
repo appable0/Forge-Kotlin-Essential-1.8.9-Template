@@ -1,14 +1,14 @@
 [
   {
 	"modid": "examplemod",
-	"name": "Xample Mod",
-	"description": "A mod that is used as an example.",
-	"version": "1.0.0",
+	"name": "ExampleMod",
+	"description": "A template for Forge 1.8.9 client-side mods using Kotlin and Essential.",
+	"version": "1.0",
 	"mcversion": "1.8.9",
-	"url": "https://github.com/romangraef/Forge1.8.9Template/",
+	"url": "",
 	"updateUrl": "",
 	"authorList": [
-	  "You"
+	  "appable"
 	],
 	"credits": "",
 	"logoFile": "",

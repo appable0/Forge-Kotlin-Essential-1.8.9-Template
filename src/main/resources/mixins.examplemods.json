@@ -1,10 +1,8 @@
 {
-  "package": "com.example.mixin",
+  "package": "com.examplemod.mixin",
   "refmap": "mixins.examplemod.refmap.json",
   "minVersion": "0.7",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
-  ],
   "client": [
 	"MixinGuiMainMenu"
   ]
