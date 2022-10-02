@@ -1,10 +1,10 @@
 [
   {
-	"modid": "examplemod",
-	"name": "ExampleMod",
+	"modid": "${modid}",
+	"name": "${modname}",
 	"description": "A template for Forge 1.8.9 client-side mods using Kotlin and Essential.",
-	"version": "1.0",
-	"mcversion": "1.8.9",
+	"version": "${version}",
+	"mcversion": "${mcversion}",
 	"url": "",
 	"updateUrl": "",
 	"authorList": [

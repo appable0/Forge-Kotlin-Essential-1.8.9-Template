@@ -6,6 +6,7 @@ import net.minecraft.client.gui.GuiScreen
 import net.minecraftforge.client.ClientCommandHandler
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
+import net.minecraftforge.fml.common.ModMetadata
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
@@ -13,16 +14,18 @@ import net.minecraftforge.fml.common.gameevent.TickEvent
 import java.io.File
 
 @Mod(
-    modid = ExampleMod.MOD_ID,
-    name = ExampleMod.MOD_NAME,
-    version = ExampleMod.MOD_VERSION,
+    modid = "examplemod",
+    name = "ExampleMod",
+    version = "1.0",
+    useMetadata = true,
     clientSideOnly = true
 )
 class ExampleMod {
 
     @Mod.EventHandler
     fun preInit(event: FMLPreInitializationEvent) {
-        val directory = File(event.modConfigurationDirectory, MOD_ID)
+        metadata = event.modMetadata
+        val directory = File(event.modConfigurationDirectory, event.modMetadata.modId)
         directory.mkdirs()
         configDirectory = directory
     }
@@ -31,6 +34,7 @@ class ExampleMod {
     fun onInit(event: FMLInitializationEvent) {
         persistentData = PersistentData.load()
         config = Config.apply { this.initialize() }
+
         ClientCommandHandler.instance.registerCommand(ExampleCommand())
 
         listOf(
@@ -53,8 +57,6 @@ class ExampleMod {
         lateinit var config: Config
         lateinit var persistentData: PersistentData
 
-        const val MOD_ID = "examplemod"
-        const val MOD_NAME = "examplemod"
-        const val MOD_VERSION = "1.0"
+        lateinit var metadata: ModMetadata
     }
 }

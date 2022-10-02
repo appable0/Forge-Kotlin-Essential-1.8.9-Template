@@ -72,17 +72,32 @@ dependencies {
     implementation("gg.essential:essential-1.8.9-forge:3662")
 }
 
+tasks {
+    processResources {
+        filesMatching("mcmod.info") {
+            expand(
+                mapOf(
+                    "modname" to project.name,
+                    "modid" to project.name.toLowerCase(),
+                    "version" to project.version,
+                    "mcversion" to "1.8.9"
+                )
+            )
+        }
+    }
+}
+
+
 tasks.withType(JavaCompile::class) {
     options.encoding = "UTF-8"
 }
 
 tasks.withType(Jar::class) {
-    archiveBaseName.set("ExampleMod")
     manifest.attributes.run {
         this["FMLCorePluginContainsFMLMod"] = "true"
         this["ForceLoadAsMod"] = "true"
 
-        this["MixinConfigs"] = "mixins.examplemods.json"
+        this["MixinConfigs"] = "mixins.examplemod.json"
 
         this["TweakClass"] = "gg.essential.loader.stage0.EssentialSetupTweaker"
         this["TweakOrder"] = "0"
@@ -90,7 +105,6 @@ tasks.withType(Jar::class) {
 }
 
 val remapJar by tasks.named<net.fabricmc.loom.task.RemapJarTask>("remapJar") {
-    archiveBaseName.set("ExampleMod")
     archiveClassifier.set("all")
     from(tasks.shadowJar)
     input.set(tasks.shadowJar.get().archiveFile)

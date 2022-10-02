@@ -7,7 +7,7 @@ import java.io.File
 
 object Config : Vigilant(
     File(ExampleMod.configDirectory, "config.toml"),
-    "ExampleMod"
+    ExampleMod.metadata.name
 ) {
     var demoSwitch = false
     var demoSelector = 0
