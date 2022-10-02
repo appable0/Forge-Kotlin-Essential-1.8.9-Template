@@ -28,13 +28,12 @@ class ExampleMod {
         val directory = File(event.modConfigurationDirectory, event.modMetadata.modId)
         directory.mkdirs()
         configDirectory = directory
+        persistentData = PersistentData.load()
+        config = Config
     }
 
     @Mod.EventHandler
     fun onInit(event: FMLInitializationEvent) {
-        persistentData = PersistentData.load()
-        config = Config
-
         ClientCommandHandler.instance.registerCommand(ExampleCommand())
 
         listOf(
