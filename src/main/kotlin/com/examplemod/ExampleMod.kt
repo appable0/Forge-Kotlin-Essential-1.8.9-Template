@@ -33,7 +33,7 @@ class ExampleMod {
     @Mod.EventHandler
     fun onInit(event: FMLInitializationEvent) {
         persistentData = PersistentData.load()
-        config = Config.apply { this.initialize() }
+        config = Config
 
         ClientCommandHandler.instance.registerCommand(ExampleCommand())
 

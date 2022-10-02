@@ -37,7 +37,7 @@ object Config : Vigilant(
             }
         }
 
-        category("Another category", ) {
+        category("Another category") {
             text(
                 ::demoText,
                 name = "Text",
@@ -46,8 +46,6 @@ object Config : Vigilant(
             )
 
         }
-
-        initialize()
     }
 
 
